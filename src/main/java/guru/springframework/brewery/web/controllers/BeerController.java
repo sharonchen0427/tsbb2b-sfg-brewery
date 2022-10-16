@@ -70,4 +70,7 @@ public class BeerController {
         System.out.println("P A");
     }
 
+    public void practicaC(){
+        System.out.println("P C");
+    }
 }
