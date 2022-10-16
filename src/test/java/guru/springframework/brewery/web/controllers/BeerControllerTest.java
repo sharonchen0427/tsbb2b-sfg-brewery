@@ -124,4 +124,8 @@ class BeerControllerTest {
     public void testA() {
         System.out.println("testA");
     }
+
+    public void testB() {
+        System.out.println("testB");
+    }
 }
