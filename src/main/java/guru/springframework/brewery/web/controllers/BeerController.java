@@ -65,4 +65,9 @@ public class BeerController {
 
         return new ResponseEntity<>(beerService.findBeerById(beerId), HttpStatus.OK);
     }
+
+    public void practicaA(){
+        System.out.println("P A");
+    }
+
 }
