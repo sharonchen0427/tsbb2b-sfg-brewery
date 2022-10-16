@@ -68,6 +68,7 @@ public class BeerController {
 
     public void practicaA(){
         System.out.println("P A");
+        //Modify line in A
     }
 
 }
