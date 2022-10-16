@@ -121,6 +121,7 @@ class BeerControllerTest {
         }
     }
     //on feature_jenny_dev
+
     public void testA() {
         System.out.println("testA");
         System.out.println("modified A -- line");
@@ -128,5 +129,11 @@ class BeerControllerTest {
 
     public void testB() {
         System.out.println("testB");
+
+    public void funcB() {
+        System.out.println("functionB");
+
+    public void funcA() {
+        System.out.println("functionA");
     }
 }
