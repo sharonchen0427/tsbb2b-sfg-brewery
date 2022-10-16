@@ -26,6 +26,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.UUID;
 
 @RequestMapping("/api/v1/beer")
@@ -65,4 +67,12 @@ public class BeerController {
 
         return new ResponseEntity<>(beerService.findBeerById(beerId), HttpStatus.OK);
     }
+
+    @GetMapping(path = {"/trips/download-csv"},produces = { "application/csv" })
+    public ResponseEntity<Void> downloadCsv(@RequestParam(value = "beerId") Long beerId,
+                                            HttpServletResponse httpResponse) throws IOException {
+        beerService.download(beerId, httpResponse);
+        return ResponseEntity.noContent().build();
+    }
+
 }

@@ -22,10 +22,14 @@ import guru.springframework.brewery.web.model.BeerPagedList;
 import guru.springframework.brewery.web.model.BeerStyleEnum;
 import org.springframework.data.domain.PageRequest;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.UUID;
 
 public interface BeerService {
     BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest);
 
     BeerDto findBeerById(UUID beerId);
+
+    void download(Long tripId, HttpServletResponse httpResponse) throws IOException;
 }

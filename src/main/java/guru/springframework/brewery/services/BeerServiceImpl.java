@@ -25,9 +25,12 @@ import guru.springframework.brewery.web.model.BeerPagedList;
 import guru.springframework.brewery.web.model.BeerStyleEnum;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -84,5 +87,20 @@ public class BeerServiceImpl implements BeerService {
             //todo add error handling
             throw new RuntimeException("Not Found");
         }
+    }
+
+    @Override
+    public void download(Long beerId, HttpServletResponse httpResponse) throws IOException {
+        List<BeerStatesMapper> rowMapper = beerRepository.getStates(beerId);
+        String dataEncoded = rowMapper.get(0).getEnrichedStatesJson();
+        EnrichedStatesList list = beerServiceHelper.decodeAndDecompose(dataEncoded);
+        httpResponse.setStatus(HttpStatus.OK.value());
+        httpResponse.addHeader("Content-Type", "application/json");
+        httpResponse.addHeader("Content-Disposition", "attachment;filename="+beerId+".csv");
+        StatefulBeanToCsv<EnrichedStates> writer = new StatefulBeanToCsvBuilder<EnrichedStates>(
+             httpResponse.getWriter().withQuotechar('\u0000')
+                     .withSeparator(',')
+                     .withOrderedResult(true).build()
+        );
     }
 }
