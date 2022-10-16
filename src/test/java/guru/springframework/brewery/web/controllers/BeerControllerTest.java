@@ -121,7 +121,11 @@ class BeerControllerTest {
         }
     }
     //on feature_jenny_dev
+
     public void funcB() {
         System.out.println("functionB");
+
+    public void funcA() {
+        System.out.println("functionA");
     }
 }
