@@ -66,6 +66,9 @@ public class BeerController {
         return new ResponseEntity<>(beerService.findBeerById(beerId), HttpStatus.OK);
     }
 
+    void func_z() {
+        System.out.println("z");
+    }
     void func_y() {
         System.out.println("y");
     }
