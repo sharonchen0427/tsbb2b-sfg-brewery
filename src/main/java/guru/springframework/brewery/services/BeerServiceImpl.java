@@ -89,4 +89,8 @@ public class BeerServiceImpl implements BeerService {
     public void func_111() {
         System.out.println("111");
     }
+    public void func_222() {
+        System.out.println("222");
+    }
+
 }
