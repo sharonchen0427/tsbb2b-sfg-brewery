@@ -68,11 +68,6 @@ public class BeerController {
         return new ResponseEntity<>(beerService.findBeerById(beerId), HttpStatus.OK);
     }
 
-    @GetMapping(path = {"/trips/download-csv"},produces = { "application/csv" })
-    public ResponseEntity<Void> downloadCsv(@RequestParam(value = "beerId") Long beerId,
-                                            HttpServletResponse httpResponse) throws IOException {
-        beerService.download(beerId, httpResponse);
-        return ResponseEntity.noContent().build();
-    }
+
 
 }

@@ -89,18 +89,4 @@ public class BeerServiceImpl implements BeerService {
         }
     }
 
-    @Override
-    public void download(Long beerId, HttpServletResponse httpResponse) throws IOException {
-        List<BeerStatesMapper> rowMapper = beerRepository.getStates(beerId);
-        String dataEncoded = rowMapper.get(0).getEnrichedStatesJson();
-        EnrichedStatesList list = beerServiceHelper.decodeAndDecompose(dataEncoded);
-        httpResponse.setStatus(HttpStatus.OK.value());
-        httpResponse.addHeader("Content-Type", "application/json");
-        httpResponse.addHeader("Content-Disposition", "attachment;filename="+beerId+".csv");
-        StatefulBeanToCsv<EnrichedStates> writer = new StatefulBeanToCsvBuilder<EnrichedStates>(
-             httpResponse.getWriter().withQuotechar('\u0000')
-                     .withSeparator(',')
-                     .withOrderedResult(true).build()
-        );
-    }
 }

@@ -31,5 +31,4 @@ public interface BeerService {
 
     BeerDto findBeerById(UUID beerId);
 
-    void download(Long tripId, HttpServletResponse httpResponse) throws IOException;
 }
