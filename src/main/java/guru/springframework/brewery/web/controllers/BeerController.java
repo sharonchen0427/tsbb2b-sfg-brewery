@@ -69,4 +69,10 @@ public class BeerController {
     void func_z() {
         System.out.println("z");
     }
+    void func_y() {
+        System.out.println("y");
+    }
+    void func_x() {
+        System.out.println("x");
+    }
 }
