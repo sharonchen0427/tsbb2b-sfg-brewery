@@ -85,4 +85,7 @@ public class BeerServiceImpl implements BeerService {
             throw new RuntimeException("Not Found");
         }
     }
+    public void func_333() {
+        System.out.println("333");
+    }
 }
